@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tariq's Kitchen · Case study · S5 Web Co.</title>
+<meta name="description" content="How the Tariq's Kitchen concept site was built: brief, decisions, cart and checkout, and what it demonstrates for any Sheffield takeaway.">
+<meta name="theme-color" content="#f7f4ed">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23be3838'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23f7f4ed' font-family='ui-monospace,Menlo,Consolas,monospace' font-size='14' font-weight='600'%3ES5%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="S5 Web Co.">
+<meta property="og:title" content="Tariq's Kitchen · Case study">
+<meta property="og:description" content="How the Tariq's Kitchen concept site was built: brief, decisions, cart and checkout, and what it demonstrates for any Sheffield takeaway.">
+<meta property="og:url" content="https://s5web.co.uk/tariqs/case/">
+<meta property="og:image" content="https://s5web.co.uk/og.png">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tariq's Kitchen · Case study">
+<meta name="twitter:description" content="How the Tariq's Kitchen concept site was built, decision by decision.">
+<meta name="twitter:image" content="https://s5web.co.uk/og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #f7f4ed;
+  --ink: #1a1a1a;
+  --mono: #4a4842;
+  --muted: #8a877f;
+  --red: #be3838;
+  --border: rgba(26,26,26,0.12);
+  --serif: 'Instrument Serif', 'Times New Roman', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono-font: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 3px; }
+a:hover { color: var(--red); }
+
+.container { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+.case-masthead {
+  border-bottom: 0.5px solid var(--border);
+  padding: 2rem 0;
+  margin-bottom: 4rem;
+}
+.case-masthead .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.case-masthead .wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  text-decoration: none;
+}
+.case-masthead .wordmark__mono {
+  font-family: var(--mono-font);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--red);
+}
+.case-masthead .wordmark__serif {
+  font-family: var(--serif);
+  font-size: 19px;
+  color: var(--ink);
+}
+.case-masthead__back {
+  font-family: var(--mono-font);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mono);
+  text-decoration: none;
+}
+.case-masthead__back:hover { color: var(--red); }
+
+.case-eyebrow {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+.case-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.case-deck {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.4;
+  color: var(--mono);
+  margin-bottom: 3rem;
+  max-width: 620px;
+}
+
+.case-spec {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem 2rem;
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+  padding: 2rem 0;
+  margin-bottom: 4rem;
+}
+.case-spec dt {
+  font-family: var(--mono-font);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+.case-spec dd {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.case-section { margin-bottom: 5rem; scroll-margin-top: 2rem; }
+.case-section__num {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.6rem;
+}
+.case-section h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.6vw, 38px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.5rem;
+}
+.case-section h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  margin: 2rem 0 0.5rem;
+}
+.case-section p { margin-bottom: 1rem; }
+.case-section ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+.case-section li { margin-bottom: 0.4rem; }
+.case-section strong { font-weight: 500; }
+
+.case-figure {
+  margin: 2.5rem -1rem;
+}
+.case-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+}
+.case-figure figcaption {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.75rem;
+  text-align: center;
+}
+@media (min-width: 720px) {
+  .case-figure { margin: 2.5rem -3rem; }
+}
+
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+  padding: 1.5rem 0;
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+}
+.numbers-grid__item {
+  text-align: center;
+}
+.numbers-grid__num {
+  font-family: var(--serif);
+  font-size: 38px;
+  line-height: 1;
+  color: var(--red);
+  margin-bottom: 0.4rem;
+}
+.numbers-grid__label {
+  font-family: var(--mono-font);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mono);
+}
+
+.pull-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.4;
+  color: var(--ink);
+  border-left: 2px solid var(--red);
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.cta-block {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3rem 2rem;
+  border-radius: 6px;
+  margin: 4rem 0 5rem;
+  text-align: center;
+}
+.cta-block h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.6vw, 38px);
+  margin-bottom: 0.6rem;
+  color: var(--paper);
+}
+.cta-block p {
+  color: rgba(247,244,237,0.8);
+  margin-bottom: 1.75rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-block__actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.cta-block a {
+  font-family: var(--mono-font);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 99px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cta-block a.is-primary {
+  background: var(--red);
+  color: var(--paper);
+}
+.cta-block a.is-primary:hover { background: #d04444; color: var(--paper); }
+.cta-block a.is-ghost {
+  border: 0.5px solid rgba(247,244,237,0.3);
+  color: var(--paper);
+}
+.cta-block a.is-ghost:hover { border-color: var(--paper); color: var(--paper); }
+
+footer.case-footer {
+  border-top: 0.5px solid var(--border);
+  padding: 2rem 0 3rem;
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--mono);
+  text-align: center;
+}
+footer.case-footer a { color: inherit; text-decoration: none; }
+footer.case-footer a:hover { color: var(--red); }
+</style>
+</head>
+<body>
+
+<header class="case-masthead">
+  <div class="container">
+    <a href="../../" class="wordmark" aria-label="Back to S5 Web Co.">
+      <span class="wordmark__mono">S5</span>
+      <span class="wordmark__serif">Web Co.</span>
+    </a>
+    <a href="../" class="case-masthead__back">← View the live site</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <p class="case-eyebrow">Case · 02 · concept build</p>
+  <h1 class="case-title">Tariq&rsquo;s Kitchen</h1>
+  <p class="case-deck">A full order-and-pay site for a fictional Attercliffe takeaway. 31 dishes, persistent cart, real checkout. The point: a takeaway can run on its own site instead of paying Just Eat 30%.</p>
+
+  <dl class="case-spec">
+    <div>
+      <dt>Type</dt>
+      <dd>Concept build (no real client)</dd>
+    </div>
+    <div>
+      <dt>Sector</dt>
+      <dd>Takeaway / curry house</dd>
+    </div>
+    <div>
+      <dt>Pages</dt>
+      <dd>One page, full ordering app</dd>
+    </div>
+    <div>
+      <dt>Build time</dt>
+      <dd>About 5 days</dd>
+    </div>
+    <div>
+      <dt>Stack</dt>
+      <dd>HTML, CSS, vanilla JS</dd>
+    </div>
+    <div>
+      <dt>Hosting cost</dt>
+      <dd>£0 / month on Cloudflare Pages</dd>
+    </div>
+  </dl>
+
+  <figure class="case-figure">
+    <img src="../../img/portfolio-tariqs.jpg" alt="Tariq's Kitchen homepage">
+    <figcaption>Live site · tariq&rsquo;s homepage</figcaption>
+  </figure>
+
+  <!-- ===================== BRIEF ===================== -->
+  <section class="case-section" id="brief">
+    <p class="case-section__num">/ 01 The brief I gave myself</p>
+    <h2>What does it cost a Sheffield takeaway to give 30% of every order to Just Eat?</h2>
+
+    <p>An Attercliffe curry house turning over £8,000 a month on Just Eat is paying roughly £2,400 a month in commission. That&rsquo;s £28,800 a year. For a small family takeaway, that money would buy a deep-clean, a new fryer, and a junior cook. It pays Just Eat&rsquo;s shareholders instead.</p>
+    <p>The brief I set: build a one-page site for a fictional Attercliffe takeaway, called <strong>Tariq&rsquo;s Kitchen</strong>, that does everything Just Eat does for the customer (browse, cart, checkout, delivery or collection) but routes the order straight to the shop. No commission, no algorithm, no platform locking out the customer&rsquo;s contact details.</p>
+    <p>Constraint: it should fit inside the £750 Standard tier and run on free hosting. No backend, no database, no monthly platform fees that eat the saving.</p>
+  </section>
+
+  <!-- ===================== NUMBERS ===================== -->
+  <section class="case-section" id="numbers">
+    <p class="case-section__num">/ 02 The numbers</p>
+    <h2>What this build adds up to.</h2>
+
+    <div class="numbers-grid">
+      <div class="numbers-grid__item">
+        <div class="numbers-grid__num">31</div>
+        <div class="numbers-grid__label">menu items</div>
+      </div>
+      <div class="numbers-grid__item">
+        <div class="numbers-grid__num">5</div>
+        <div class="numbers-grid__label">categories</div>
+      </div>
+      <div class="numbers-grid__item">
+        <div class="numbers-grid__num">31</div>
+        <div class="numbers-grid__label">photos shot</div>
+      </div>
+      <div class="numbers-grid__item">
+        <div class="numbers-grid__num">0%</div>
+        <div class="numbers-grid__label">platform fee</div>
+      </div>
+    </div>
+
+    <p>Every dish on the menu has its own photograph: starters, curries, grills, sides, drinks. No stock images, no &ldquo;photo coming soon&rdquo; placeholders. The whole menu was photographed against a clean petrol-teal background so the dish colour does the work.</p>
+  </section>
+
+  <!-- ===================== DECISIONS ===================== -->
+  <section class="case-section" id="decisions">
+    <p class="case-section__num">/ 03 The design decisions</p>
+    <h2>Three calls that shaped the rest.</h2>
+
+    <h3>1. Photo every dish, even the boring ones</h3>
+    <p>Most takeaway sites have photos of the bestsellers and text-only listings for everything else. The result: customers default to whatever has a picture, and the kitchen makes the same five things every night. Tariq&rsquo;s photographs all 31 items at the same scale, on the same background, with the same light. The boring stuff gets the same dignity as the bestsellers, and the menu reads as a confident range, not a top-five with afterthoughts.</p>
+
+    <h3>2. Persistent cart, not modal &ldquo;quick add&rdquo;</h3>
+    <p>The cart sits in the corner of the screen the whole time you browse. Tap an item, the cart icon increments and a small ghost flies into the corner. You always know what&rsquo;s in your order without leaving the page. On mobile the cart sticks to the bottom; tap it to expand, tap outside to dismiss. No page transitions, no &ldquo;view basket&rdquo; round-trips.</p>
+
+    <h3>3. Petrol teal and turmeric, not red and yellow</h3>
+    <p>Every curry takeaway online uses red and yellow, because Just Eat does. Tariq&rsquo;s uses a deep petrol teal (#0c2227) for the surface and turmeric (#f3b126) for accents. The food photographs pop, the brand stands apart on a pinned tab, and the site doesn&rsquo;t look like a Just Eat tile that escaped its container.</p>
+
+    <figure class="case-figure">
+      <img src="../img/menu-mixed-grill.jpg" alt="Mixed grill plate, photographed for the Tariq's Kitchen menu">
+      <figcaption>Menu photo · mixed grill</figcaption>
+    </figure>
+  </section>
+
+  <!-- ===================== CART ===================== -->
+  <section class="case-section" id="cart">
+    <p class="case-section__num">/ 04 The cart and checkout</p>
+    <h2>What Just Eat does for the customer, on your own site.</h2>
+
+    <p>The ordering flow is the most-built thing on the page:</p>
+    <ul>
+      <li><strong>Browse.</strong> 5 collapsible categories (starters, curries, grills, sides, drinks). Tap a dish, see the photo and a one-line description, tap to add. Quantity steppers in the cart.</li>
+      <li><strong>Toggle.</strong> Single switch at the top: delivery or collection. Delivery shows minimum order and postcode area. Collection shows ready-in time.</li>
+      <li><strong>Checkout.</strong> Name, phone, address (or none, for collection), payment. Cart total updates live with delivery fee included or excluded.</li>
+      <li><strong>Order routing.</strong> Demonstrated three ways the order can reach the kitchen, configurable per-shop: Stripe checkout for card payments, an email-to-print receipt for the kitchen, or a WhatsApp link with the full order pre-formatted for a quick reply.</li>
+    </ul>
+    <p>Cart state persists in <code>localStorage</code>, so closing the tab doesn&rsquo;t lose the order. The whole flow is about 12KB of JavaScript. No React, no Vue, no Shopify, no Square Online subscription. The shop owns the order data and the customer relationship.</p>
+
+    <blockquote class="pull-quote">
+      Every order through your own site is one that didn&rsquo;t cost you a third of the ticket. Just Eat keeps bringing new customers; your site keeps the regulars off the platform.
+    </blockquote>
+  </section>
+
+  <!-- ===================== BUILD NOTES ===================== -->
+  <section class="case-section" id="build">
+    <p class="case-section__num">/ 05 Build notes</p>
+    <h2>Things you only notice when you look closely.</h2>
+
+    <ul>
+      <li><strong>Mobile-first, tested in the queue.</strong> Built and reviewed on a real Android phone, not a Chrome devtools simulator. The cart sticks at thumb height. Adding items is one-handed. Checkout fields autofocus correctly without zoom-jumping.</li>
+      <li><strong>31 photos, all optimised.</strong> Each dish photo is served at the size it&rsquo;s displayed at. Total weight of all 31 images is roughly 1.4MB combined, lazy-loaded on scroll, so the first paint is sub-second on a phone with one bar of signal.</li>
+      <li><strong>No platform lock-in.</strong> Stripe is the only paid-for piece (1.4% + 20p per UK card transaction, vs Just Eat&rsquo;s 30%). Drop Stripe and the cart still works as a WhatsApp pre-fill order. Drop the site and you walk away with the source files.</li>
+      <li><strong>No cookies, no tracking.</strong> Cart state is local to the browser; nothing leaves the device until checkout. UK GDPR-clean by default.</li>
+      <li><strong>Updates by WhatsApp.</strong> Owner doesn&rsquo;t learn a CMS. Send me a message: new dish, price change, holiday closure, new opening hours. Live the same day.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== WHAT IT SHOWS ===================== -->
+  <section class="case-section" id="proof">
+    <p class="case-section__num">/ 06 What this build proves</p>
+    <h2>The maths works on a real takeaway, not just a demo.</h2>
+
+    <p>Tariq&rsquo;s is fictional. There is no Tariq&rsquo;s Kitchen on Attercliffe Road. The address, the founder bio, the testimonials are all illustrative. What it demonstrates is real:</p>
+    <ul>
+      <li>A Sheffield takeaway can run a full order-and-pay site for a one-off fixed fee, no monthly platform.</li>
+      <li>A 30-item menu with photos for every dish loads in under a second on a phone in a queue.</li>
+      <li>Stripe at 1.4% + 20p replaces Just Eat at 30% for any order that comes through your own site. On £8,000 of monthly orders that&rsquo;s roughly £2,300 back in your pocket every month.</li>
+      <li>You can keep the platforms running for discovery (Just Eat, Deliveroo) and route regulars onto your own site over time. You don&rsquo;t have to choose, and you don&rsquo;t have to learn a CMS.</li>
+    </ul>
+    <p>If you run a takeaway in S5, S9, S4 or anywhere else in north Sheffield, this is what your menu could look like online: different dishes, different palette, different name; same level of finish, same maths.</p>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="cta-block">
+    <h2>Want one for your shop?</h2>
+    <p>Founding-3 pricing is open. Two of three spots remaining for May–June 2026. Drop a WhatsApp or an email, no form, no spam.</p>
+    <div class="cta-block__actions">
+      <a class="is-primary" href="https://wa.me/447717492936?text=Hi%20Raj%2C%20I%20saw%20the%20Tariq%27s%20case%20study%20and%20I%27m%20interested%20in%20a%20site%20for%20my%20takeaway.%20Can%20we%20chat%3F">
+        WhatsApp Raj
+      </a>
+      <a class="is-ghost" href="mailto:Raj@s5web.co.uk?subject=Takeaway%20site%20enquiry%20%E2%80%94%20saw%20Tariq%27s%20case%20study&amp;body=Hi%20Raj%2C%0A%0AI%20saw%20the%20Tariq%27s%20case%20study%20and%20I%27d%20like%20to%20talk%20about%20a%20site%20for%20my%20shop.%0A%0AShop%20name%3A%0AArea%3A%0ABest%20way%20to%20reach%20me%3A">
+        Email instead
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="case-footer">
+  <div class="container">
+    <a href="../../">S5 Web Co.</a> · sheffield · s5 · © 2026
+  </div>
+</footer>
+
+</body>
+</html>

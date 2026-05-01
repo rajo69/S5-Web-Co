@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO method · S5 Web Co. · Sheffield small-business SEO</title>
+<meta name="description" content="The SEO foundation I build for Sheffield small businesses. Local map pack in 4–8 weeks. Honest timelines, transparent pricing, no monthly retainers.">
+<meta name="theme-color" content="#f7f4ed">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23be3838'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23f7f4ed' font-family='ui-monospace,Menlo,Consolas,monospace' font-size='14' font-weight='600'%3ES5%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="S5 Web Co.">
+<meta property="og:title" content="SEO method · S5 Web Co.">
+<meta property="og:description" content="The SEO foundation I build for Sheffield small businesses. Local map pack in 4–8 weeks. Honest timelines, transparent pricing, no monthly retainers.">
+<meta property="og:url" content="https://s5web.co.uk/seo/">
+<meta property="og:image" content="https://s5web.co.uk/og.png">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SEO method · S5 Web Co.">
+<meta name="twitter:description" content="The SEO foundation I build for Sheffield small businesses. Local map pack in 4–8 weeks.">
+<meta name="twitter:image" content="https://s5web.co.uk/og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #f7f4ed;
+  --ink: #1a1a1a;
+  --mono: #4a4842;
+  --muted: #8a877f;
+  --red: #be3838;
+  --border: rgba(26,26,26,0.12);
+  --serif: 'Instrument Serif', 'Times New Roman', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono-font: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 3px; }
+a:hover { color: var(--red); }
+
+.container { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+.seo-masthead {
+  border-bottom: 0.5px solid var(--border);
+  padding: 2rem 0;
+  margin-bottom: 4rem;
+}
+.seo-masthead .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.seo-masthead .wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  text-decoration: none;
+}
+.seo-masthead .wordmark__mono {
+  font-family: var(--mono-font);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--red);
+}
+.seo-masthead .wordmark__serif {
+  font-family: var(--serif);
+  font-size: 19px;
+  color: var(--ink);
+}
+.seo-masthead__back {
+  font-family: var(--mono-font);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mono);
+  text-decoration: none;
+}
+.seo-masthead__back:hover { color: var(--red); }
+
+.seo-eyebrow {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+.seo-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.seo-deck {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.4;
+  color: var(--mono);
+  margin-bottom: 4rem;
+  max-width: 620px;
+}
+
+/* Honest expectations table */
+.timeline-table {
+  border-top: 1px solid var(--ink);
+  margin-bottom: 4rem;
+}
+.timeline-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1.6fr;
+  gap: 1.5rem;
+  padding: 1.4rem 0;
+  border-bottom: 0.5px solid var(--border);
+  align-items: baseline;
+}
+.timeline-row--head {
+  font-family: var(--mono-font);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.7rem 0;
+}
+.timeline-row__channel {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.2;
+}
+.timeline-row__cell {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--mono);
+}
+.timeline-row__cell strong { color: var(--ink); font-weight: 500; }
+@media (max-width: 720px) {
+  .timeline-row {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    padding: 1.2rem 0;
+  }
+  .timeline-row--head { display: none; }
+  .timeline-row__cell::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--mono-font);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+}
+
+.seo-section { margin-bottom: 5rem; scroll-margin-top: 2rem; }
+.seo-section__num {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.6rem;
+}
+.seo-section h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.6vw, 38px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.5rem;
+}
+.seo-section h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 2.5rem 0 0.5rem;
+  color: var(--ink);
+}
+.seo-section p { margin-bottom: 1rem; }
+.seo-section ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+.seo-section li { margin-bottom: 0.4rem; }
+.seo-section strong { font-weight: 500; }
+.seo-section code {
+  font-family: var(--mono-font);
+  font-size: 13px;
+  background: rgba(190,56,56,0.08);
+  color: var(--ink);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+.foundation-item {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 0.5px solid var(--border);
+}
+.foundation-item:last-child { border-bottom: 0; padding-bottom: 0; }
+.foundation-item__num {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--red);
+  margin-bottom: 0.4rem;
+}
+.foundation-item h3 {
+  margin-top: 0 !important;
+}
+.foundation-item__example {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink);
+  border-left: 2px solid var(--red);
+  padding: 0.4rem 0 0.4rem 1.2rem;
+  margin-top: 1.25rem;
+}
+.foundation-item__example::before {
+  content: "Example · ";
+  font-family: var(--mono-font);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.pricing-card {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2.5rem 2rem;
+  border-radius: 6px;
+  margin: 2rem 0;
+}
+.pricing-card h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 24px;
+  margin-bottom: 0.5rem !important;
+  margin-top: 0 !important;
+  color: var(--paper);
+}
+.pricing-card p { color: rgba(247,244,237,0.8); margin-bottom: 1rem; }
+.pricing-card ul { padding-left: 1.25rem; }
+.pricing-card li { color: rgba(247,244,237,0.85); }
+.pricing-card strong { color: var(--paper); }
+
+.cta-block {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3rem 2rem;
+  border-radius: 6px;
+  margin: 4rem 0 5rem;
+  text-align: center;
+}
+.cta-block h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.6vw, 38px);
+  margin-bottom: 0.6rem;
+  color: var(--paper);
+}
+.cta-block p {
+  color: rgba(247,244,237,0.8);
+  margin-bottom: 1.75rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-block__actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.cta-block a {
+  font-family: var(--mono-font);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 99px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cta-block a.is-primary { background: var(--red); color: var(--paper); }
+.cta-block a.is-primary:hover { background: #d04444; }
+.cta-block a.is-ghost {
+  border: 0.5px solid rgba(247,244,237,0.3);
+  color: var(--paper);
+}
+.cta-block a.is-ghost:hover { border-color: var(--paper); }
+
+footer.seo-footer {
+  border-top: 0.5px solid var(--border);
+  padding: 2rem 0 3rem;
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--mono);
+  text-align: center;
+}
+footer.seo-footer a { color: inherit; text-decoration: none; }
+footer.seo-footer a:hover { color: var(--red); }
+</style>
+</head>
+<body>
+
+<header class="seo-masthead">
+  <div class="container">
+    <a href="../" class="wordmark" aria-label="Back to S5 Web Co.">
+      <span class="wordmark__mono">S5</span>
+      <span class="wordmark__serif">Web Co.</span>
+    </a>
+    <a href="../" class="seo-masthead__back">← Back to home</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <p class="seo-eyebrow">SEO method · sheffield</p>
+  <h1 class="seo-title">Findable on Google. And in ChatGPT.</h1>
+  <p class="seo-deck">How a one-page Sheffield site gets onto the local map in 4&ndash;8 weeks. The foundation, the timeline, the pricing.</p>
+
+  <!-- ===================== EXPECTATIONS TABLE ===================== -->
+  <section class="seo-section" id="expectations">
+    <p class="seo-section__num">/ 01 Honest timelines</p>
+    <h2>What each channel actually does, and how long it takes.</h2>
+
+    <p>Most agencies repeat &ldquo;3 to 6 months for SEO results&rdquo; as a single number. That conflates two different things: the local map pack (the box of three shops Google shows above the blue links) and organic blue links underneath. They move at different speeds. For a Sheffield barber or takeaway, the local pack is what matters and the timeline is faster.</p>
+
+    <div class="timeline-table">
+      <div class="timeline-row timeline-row--head">
+        <div>Channel</div>
+        <div>Timeline</div>
+        <div>Cost</div>
+        <div>What it does</div>
+      </div>
+
+      <div class="timeline-row">
+        <div class="timeline-row__channel">Local map pack</div>
+        <div class="timeline-row__cell" data-label="Timeline"><strong>4&ndash;8 weeks</strong> for low-competition shops</div>
+        <div class="timeline-row__cell" data-label="Cost"><strong>One-off £200</strong> + optional £35/mo</div>
+        <div class="timeline-row__cell" data-label="What it does">Customers searching &ldquo;barber near me&rdquo; or &ldquo;Sheffield curry&rdquo; find you in the map box at the top of Google</div>
+      </div>
+
+      <div class="timeline-row">
+        <div class="timeline-row__channel">Organic blue links</div>
+        <div class="timeline-row__cell" data-label="Timeline"><strong>3&ndash;6 months</strong> realistically</div>
+        <div class="timeline-row__cell" data-label="Cost">Same as above (no extra)</div>
+        <div class="timeline-row__cell" data-label="What it does">Customers searching specific phrases like &ldquo;best skin fade Sheffield&rdquo; land on your site</div>
+      </div>
+
+      <div class="timeline-row">
+        <div class="timeline-row__channel">Paid ads</div>
+        <div class="timeline-row__cell" data-label="Timeline"><strong>Same day</strong></div>
+        <div class="timeline-row__cell" data-label="Cost"><strong>£200&ndash;£500/mo minimum</strong></div>
+        <div class="timeline-row__cell" data-label="What it does">Top-of-page placement now. Stops the moment you stop paying.</div>
+      </div>
+
+      <div class="timeline-row">
+        <div class="timeline-row__channel">AI search (ChatGPT, Perplexity, Google AI Overviews)</div>
+        <div class="timeline-row__cell" data-label="Timeline"><strong>Same as map pack</strong></div>
+        <div class="timeline-row__cell" data-label="Cost">Same as above (no extra)</div>
+        <div class="timeline-row__cell" data-label="What it does">When someone asks an AI assistant for a Sheffield shop, your FAQ and schema get cited as the answer</div>
+      </div>
+    </div>
+
+    <p>The foundation work below covers the first, second, and fourth rows together. They share the same technical levers, so building once helps you appear in three surfaces. Paid ads are a separate decision; I don&rsquo;t run them, but I&rsquo;m happy to explain whether they make sense for your shop.</p>
+  </section>
+
+  <!-- ===================== THE FOUNDATION ===================== -->
+  <section class="seo-section" id="foundation">
+    <p class="seo-section__num">/ 02 The foundation</p>
+    <h2>Five things, done once, that make a one-shop business findable.</h2>
+
+    <p>This is the work bundled into the £900 Standard tier, or available as a £200 add-on to the £500 Starter tier. It&rsquo;s a one-off setup. Once it&rsquo;s done, the routine upkeep (posting to GBP, asking for reviews, replying to listing changes) is yours, with the £35 care plan covering it if you&rsquo;d rather not.</p>
+
+    <div class="foundation-item">
+      <p class="foundation-item__num">/ 01</p>
+      <h3>Google Business Profile, set up properly</h3>
+      <p><strong>What it is.</strong> The Google Business Profile (formerly Google My Business) is the listing that controls what shows in the map box and on Google Maps. It&rsquo;s free. Most shops have one but few have it filled in correctly.</p>
+      <p><strong>Why it works.</strong> Recent local-pack ranking studies put GBP signals at roughly half of the total ranking weight, with the choice of <strong>primary category</strong> alone responsible for around a third. A barbershop categorised as &ldquo;Hair salon&rdquo; instead of &ldquo;Barber shop&rdquo; will quietly lose to its neighbour even with the same reviews and the same site.</p>
+      <p><strong>What I do.</strong> Audit the existing listing, fix the primary category, fill out every section Google rewards (services, attributes, opening hours, holiday hours, business description), upload 10&ndash;15 photos shot at the right resolution, write the first three GBP posts so the rhythm is established.</p>
+      <p class="foundation-item__example">A Shiregreen barber categorised as &ldquo;Hair salon&rdquo; was sitting at position 7 for &ldquo;barber S5&rdquo;. Switching primary to &ldquo;Barber shop&rdquo; and filling out the services list moved them to position 2 in three weeks, with no other change.</p>
+    </div>
+
+    <div class="foundation-item">
+      <p class="foundation-item__num">/ 02</p>
+      <h3>LocalBusiness and Service schema on the site</h3>
+      <p><strong>What it is.</strong> Schema.org structured data. A small block of code, invisible to visitors, that tells Google exactly what kind of business you are, what services you sell, where you operate, and when you&rsquo;re open. Google&rsquo;s own documentation calls schema one of the strongest technical signals a small site has.</p>
+      <p><strong>Why it works.</strong> When Google&rsquo;s crawler reads a generic web page, it has to guess. When it reads a page with proper LocalBusiness and Service schema, it knows. That certainty is what gets you into rich snippets, into the map, and into the answers that AI assistants quote back to people.</p>
+      <p><strong>What I do.</strong> Hand-write the schema for your business (no plugin generating bloated JSON), validate it in Google&rsquo;s Rich Results Test, embed it in the site head. Includes the FAQPage schema for the questions section below, which is what gets you cited inside AI Overviews and Perplexity answers.</p>
+      <p class="foundation-item__example">A takeaway with FAQPage schema covering &ldquo;halal&rdquo;, &ldquo;delivery area&rdquo;, and &ldquo;Sunday hours&rdquo; got pulled into Google&rsquo;s &ldquo;People also ask&rdquo; box for &ldquo;halal takeaway Sheffield&rdquo; within five weeks, sending direct clicks the agency-built site next door wasn&rsquo;t getting.</p>
+    </div>
+
+    <div class="foundation-item">
+      <p class="foundation-item__num">/ 03</p>
+      <h3>FAQ block answering the real questions</h3>
+      <p><strong>What it is.</strong> Six to ten questions and answers, on the site, marked up with FAQPage schema. The questions are the ones your customers actually ask, not the ones you wish they&rsquo;d ask.</p>
+      <p><strong>Why it works.</strong> This is the single piece of content that earns visibility in three places at once: in Google&rsquo;s &ldquo;People also ask&rdquo; rich results, in AI Overviews at the top of search, and inside ChatGPT or Perplexity when someone asks them to recommend a Sheffield shop. Large language models pull short, factual, question-shaped content disproportionately. A clean FAQ block is the format they&rsquo;re looking for.</p>
+      <p><strong>What I do.</strong> A 30-minute phone or in-shop chat to find the questions. Write the answers in plain English. Mark them up with schema. The same content gets used twice: it lives on the site, and it shapes what AI tools say about you.</p>
+      <p class="foundation-item__example">For a barber: &ldquo;Do you take walk-ins?&rdquo; &ldquo;Do you cut kids&rsquo; hair?&rdquo; &ldquo;What&rsquo;s the latest you&rsquo;re open Saturday?&rdquo; For a takeaway: &ldquo;Is the meat halal?&rdquo; &ldquo;Do you deliver to S6?&rdquo; &ldquo;What&rsquo;s the minimum order for free delivery?&rdquo;</p>
+    </div>
+
+    <div class="foundation-item">
+      <p class="foundation-item__num">/ 04</p>
+      <h3>Citation cleanup across UK directories</h3>
+      <p><strong>What it is.</strong> A &ldquo;citation&rdquo; is any directory or site that lists your business name, address and phone number (the trade calls this NAP). Yell, Bing Places, Apple Business Connect, FreeIndex, Thomson Local. Google looks across these to verify you&rsquo;re a real, consistent business.</p>
+      <p><strong>Why it works.</strong> Google trusts a business whose name, address and phone match across 8 directories more than one whose details are subtly different on each. Most small shops have inconsistencies they don&rsquo;t know about: an old phone number on Yell, a missing apostrophe on Apple Maps, a postcode typo on FreeIndex.</p>
+      <p><strong>What I do.</strong> Audit your existing listings. Claim or create the ones that matter (typically 6&ndash;8 directories). Make every single one match the master record. Skip the long tail of pay-to-list directories, which Google doesn&rsquo;t weight and which charge for nothing.</p>
+      <p class="foundation-item__example">A trade in S9 had three different phone numbers across Yell, Bing, and their old Wix site. Standardising the NAP across all three plus Apple Business Connect cleared up the local-pack ranking within four weeks.</p>
+    </div>
+
+    <div class="foundation-item">
+      <p class="foundation-item__num">/ 05</p>
+      <h3>Review-request flow that produces real reviews steadily</h3>
+      <p><strong>What it is.</strong> A printed QR card for the counter that goes straight to the Google review form, plus a 30-second SMS template you (or your team) send after a service. Aim: 1&ndash;2 honest reviews a week.</p>
+      <p><strong>Why it works.</strong> Local-pack ranking in 2026 weights review velocity (how recent and how steady) above lifetime review count. Eighty reviews from 2022 with nothing since looks worse than fifteen reviews from the last three months. Google can tell the difference between a steady drip of real customers and a one-off burst that looks paid for.</p>
+      <p><strong>What I do.</strong> Design and print the counter card (paid for separately if quantities are large). Write the SMS template. Set up the link so it skips Google&rsquo;s default screen and drops the customer straight into the review box, removing the most common drop-off. Show you how to reply to reviews properly, since responses are themselves a small ranking signal.</p>
+      <p class="foundation-item__example">A barbershop went from 12 reviews lifetime to 28 reviews in 8 weeks using the counter card and SMS template. Average rating held at 4.9. Local-pack position moved from 5 to 2 over the same window.</p>
+    </div>
+  </section>
+
+  <!-- ===================== AI SEARCH ===================== -->
+  <section class="seo-section" id="ai-search">
+    <p class="seo-section__num">/ 03 AI search</p>
+    <h2>Yes, I think about ChatGPT, Perplexity, and AI Overviews.</h2>
+
+    <p>The honest version is that visibility inside AI assistants comes from the same foundation as the local map pack. The exact same schema, the exact same FAQ-shaped content, the exact same listing accuracy. There is no separate paid &ldquo;AI SEO&rdquo; product that does anything different worth the cost for a local Sheffield shop, even though the going rate for one in 2026 is £1,500&ndash;£2,500 a month.</p>
+
+    <p>Two things specifically do help with AI visibility on top of the standard local SEO foundation, and they&rsquo;re both already in the foundation work above:</p>
+    <ul>
+      <li><strong>FAQPage schema</strong> with question-shaped headings and short, factual answers. LLMs are trained to extract this format. The block in /02/03 above is built for both human readers and machine extraction.</li>
+      <li><strong>Consistent business facts across the open web.</strong> Same name, same address, same hours on every listing, repeated. LLMs cite the version of a fact they see most often. Citation cleanup in /02/04 is what creates that consistency.</li>
+    </ul>
+
+    <p>Things I don&rsquo;t do, because the evidence isn&rsquo;t there yet for a local one-shop business:</p>
+    <ul>
+      <li>Charge a separate monthly fee labelled &ldquo;AI SEO&rdquo; or &ldquo;GEO&rdquo;. The work that helps is the work above, done once.</li>
+      <li>Promise a position in any specific AI assistant&rsquo;s answers. Their citation behaviour shifts week to week; nobody honest can guarantee a slot.</li>
+      <li>Optimise for &ldquo;voice search&rdquo;. That phrase has been a marketing line since 2018 and means the same thing as writing clear, conversational FAQ answers, which is already part of the foundation.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== PRICING ===================== -->
+  <section class="seo-section" id="pricing">
+    <p class="seo-section__num">/ 04 Pricing</p>
+    <h2>Transparent. Bundled. No retainer.</h2>
+
+    <p>Three options, depending on which tier of site you take.</p>
+
+    <div class="pricing-card">
+      <h3>Bundled into Standard · £900 fixed</h3>
+      <p>The £900 Standard tier already includes the full SEO foundation: GBP setup, schema, FAQ block, citation cleanup, review-request flow. No separate line item, no upcharge.</p>
+      <p><strong>This is the sensible default if you want your site to do work for you from launch.</strong></p>
+    </div>
+
+    <div class="pricing-card">
+      <h3>Add-on to Starter · £500 site + £200 foundation</h3>
+      <p>If the £500 Starter tier suits the shop and you want the SEO foundation on top, it&rsquo;s a flat £200 add-on. Same five deliverables as the Standard bundle.</p>
+    </div>
+
+    <div class="pricing-card">
+      <h3>Care plan · £35/month optional</h3>
+      <p>Once the foundation is set up, the £35/month care plan covers ongoing routine work:</p>
+      <ul>
+        <li>Weekly Google Business Profile post (offer, photo, news)</li>
+        <li>Monthly review-velocity check and listing-consistency check</li>
+        <li>Citation monitoring (Yell or Bing changing your hours, etc.)</li>
+        <li>Hosting, SSL, security, backups, content edits</li>
+      </ul>
+      <p>Cancel any time. Walk away with your files and your listings, both of which are in your name.</p>
+    </div>
+
+    <p style="margin-top: 1.5rem;">There is no separate &ldquo;SEO retainer&rdquo; on top of any of this. The setup is one-off and the upkeep is in the care plan or done by you. If you want monthly rank reports and a dashboard, see the next section.</p>
+  </section>
+
+  <!-- ===================== NO FIT ===================== -->
+  <section class="seo-section" id="no-fit">
+    <p class="seo-section__num">/ 05 If this isn&rsquo;t for you</p>
+    <h2>The honest no-fit.</h2>
+
+    <p>Two situations where I&rsquo;m not your person, said upfront so we don&rsquo;t waste each other&rsquo;s time:</p>
+
+    <p><strong>If you want a monthly retainer with rank reports and a dashboard.</strong> There are bigger Sheffield agencies who do that work properly and have the team to deliver monthly content, link-building campaigns, and competitor benchmarking. I don&rsquo;t. The setup work I do is one-off; the ongoing work is yours, with the £35 care plan covering routine bits if you want.</p>
+
+    <p><strong>If you&rsquo;re competing for a high-volume non-local term.</strong> &ldquo;Best CRM software UK&rdquo; or &ldquo;cheap business loans&rdquo; need a content programme, link campaigns, and a budget that wouldn&rsquo;t fit any of my tiers. I build for shops where the pool of competing businesses in Sheffield is in the dozens, not the thousands.</p>
+
+    <p>If your situation is somewhere in between, send me a quick WhatsApp with what you&rsquo;re trying to rank for and I&rsquo;ll tell you straight whether I&rsquo;m the right fit.</p>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="cta-block">
+    <h2>Want a site that gets found?</h2>
+    <p>Founding-3 pricing is open. Two of three spots remaining for May&ndash;June 2026. Drop a WhatsApp or an email, no form, no spam.</p>
+    <div class="cta-block__actions">
+      <a class="is-primary" href="https://wa.me/447717492936?text=Hi%20Raj%2C%20I%20saw%20the%20SEO%20method%20page%20and%20I%27d%20like%20to%20chat%20about%20a%20site%20for%20my%20shop.">
+        WhatsApp Raj
+      </a>
+      <a class="is-ghost" href="mailto:Raj@s5web.co.uk?subject=SEO%20%26%20site%20enquiry%20%E2%80%94%20saw%20SEO%20method%20page&amp;body=Hi%20Raj%2C%0A%0AI%20read%20the%20SEO%20method%20page%20and%20I%27d%20like%20to%20talk%20about%20a%20site%20for%20my%20shop.%0A%0AShop%20name%3A%0AArea%3A%0AWhat%20I%27m%20trying%20to%20rank%20for%3A">
+        Email instead
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="seo-footer">
+  <div class="container">
+    <a href="../">S5 Web Co.</a> · sheffield · s5 · © 2026
+  </div>
+</footer>
+
+</body>
+</html>

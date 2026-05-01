@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal · S5 Web Co.</title>
+<meta name="description" content="Privacy, cookies and terms for S5 Web Co. — Sheffield-based independent web design service.">
+<meta name="theme-color" content="#f7f4ed">
+<meta name="robots" content="noindex">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23be3838'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23f7f4ed' font-family='ui-monospace,Menlo,Consolas,monospace' font-size='14' font-weight='600'%3ES5%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #f7f4ed;
+  --ink: #1a1a1a;
+  --mono: #4a4842;
+  --muted: #8a877f;
+  --red: #be3838;
+  --border: rgba(26,26,26,0.12);
+  --serif: 'Instrument Serif', 'Times New Roman', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono-font: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 3px; }
+a:hover { color: var(--red); }
+
+.container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+
+.legal-masthead {
+  border-bottom: 0.5px solid var(--border);
+  padding: 2rem 0;
+  margin-bottom: 4rem;
+}
+.legal-masthead .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.legal-masthead .wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  text-decoration: none;
+}
+.legal-masthead .wordmark__mono {
+  font-family: var(--mono-font);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--red);
+}
+.legal-masthead .wordmark__serif {
+  font-family: var(--serif);
+  font-size: 19px;
+  color: var(--ink);
+}
+.legal-masthead__back {
+  font-family: var(--mono-font);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mono);
+  text-decoration: none;
+}
+.legal-masthead__back:hover { color: var(--red); }
+
+.legal-page-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(36px, 5.4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+.legal-page-sub {
+  color: var(--mono);
+  font-size: 15px;
+  margin-bottom: 3rem;
+}
+
+.legal-toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 0.5px solid var(--border);
+}
+.legal-toc a {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mono);
+  border: 0.5px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 99px;
+  text-decoration: none;
+}
+.legal-toc a:hover { color: var(--red); border-color: var(--red); }
+
+.legal-section { margin-bottom: 5rem; scroll-margin-top: 2rem; }
+.legal-section h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.6vw, 38px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.4rem;
+}
+.legal-section__date {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.75rem;
+}
+.legal-section h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 20px;
+  margin: 2rem 0 0.5rem;
+  color: var(--ink);
+}
+.legal-section p { margin-bottom: 1rem; color: var(--ink); }
+.legal-section ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+.legal-section li { margin-bottom: 0.4rem; }
+.legal-section strong { font-weight: 500; }
+
+footer.legal-footer {
+  border-top: 0.5px solid var(--border);
+  padding: 2rem 0 3rem;
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--mono);
+  text-align: center;
+}
+footer.legal-footer a { color: inherit; text-decoration: none; }
+footer.legal-footer a:hover { color: var(--red); }
+</style>
+</head>
+<body>
+
+<header class="legal-masthead">
+  <div class="container">
+    <a href="/" class="wordmark" aria-label="Back to S5 Web Co.">
+      <span class="wordmark__mono">S5</span>
+      <span class="wordmark__serif">Web Co.</span>
+    </a>
+    <a href="/" class="legal-masthead__back">← Back to home</a>
+  </div>
+</header>
+
+<main class="container">
+  <h1 class="legal-page-title">Legal</h1>
+  <p class="legal-page-sub">Privacy, cookies and terms. Plain English, no surprises.</p>
+
+  <nav class="legal-toc" aria-label="Legal sections">
+    <a href="#privacy">Privacy</a>
+    <a href="#cookies">Cookies</a>
+    <a href="#terms">Terms</a>
+  </nav>
+
+  <!-- ===================== PRIVACY ===================== -->
+  <section class="legal-section" id="privacy">
+    <h2>Privacy</h2>
+    <p class="legal-section__date">Effective: 30 April 2026</p>
+
+    <p>This site is run by <strong>Raj</strong>, trading as <strong>S5 Web Co.</strong>, based in Sheffield, S5. If you have a privacy question, contact <a href="mailto:Raj@s5web.co.uk">Raj@s5web.co.uk</a>.</p>
+
+    <h3>What I collect</h3>
+    <p>I only collect personal information when you choose to contact me. Specifically:</p>
+    <ul>
+      <li>Your name, email address, phone number, and the contents of any message — when you reach out via WhatsApp, phone, or the email link on this site.</li>
+      <li>If we go ahead with a project, I&rsquo;ll collect anything else needed to deliver it (business address, content for your site, etc.) — but only what&rsquo;s needed for the work.</li>
+    </ul>
+    <p>This site does <strong>not</strong> use analytics, tracking pixels, advertising cookies, or third-party tracking of any kind.</p>
+
+    <h3>How I use it</h3>
+    <p>To reply to your enquiry, quote the work, deliver the project, and stay in touch about it afterwards. Nothing more. I don&rsquo;t sell or share your information with anyone else, and I don&rsquo;t add you to a marketing list without asking first.</p>
+
+    <h3>How long I keep it</h3>
+    <p>Enquiries that don&rsquo;t turn into projects: deleted after 12 months. Project records (for clients): kept for 6 years after the project ends, in line with UK record-keeping requirements for self-employed work. You can ask me to delete your information sooner.</p>
+
+    <h3>Your rights</h3>
+    <p>Under UK GDPR you can ask me to:</p>
+    <ul>
+      <li>Tell you what data I hold about you</li>
+      <li>Correct anything that&rsquo;s wrong</li>
+      <li>Delete it (subject to the record-keeping note above)</li>
+      <li>Hand it to you in a portable format</li>
+    </ul>
+    <p>Email <a href="mailto:Raj@s5web.co.uk">Raj@s5web.co.uk</a> and I&rsquo;ll handle it within 30 days. If you&rsquo;re not satisfied with how I&rsquo;ve handled your data, you can complain to the <a href="https://ico.org.uk/" rel="noopener">Information Commissioner&rsquo;s Office</a>.</p>
+
+    <h3>Hosting and third parties</h3>
+    <p>This site is hosted on Cloudflare Pages, who may keep server access logs (IP, user-agent, timestamp) as part of standard web infrastructure. The site loads typefaces from Google Fonts; when your browser requests those, Google may log the request including your IP.</p>
+  </section>
+
+  <!-- ===================== COOKIES ===================== -->
+  <section class="legal-section" id="cookies">
+    <h2>Cookies</h2>
+    <p class="legal-section__date">Effective: 30 April 2026</p>
+
+    <p><strong>This site sets no cookies.</strong> No analytics, no tracking pixels, no advertising tags, no &ldquo;essential&rdquo; cookies for logins (because there are no logins).</p>
+    <p>The only third-party requests this site makes are to Google Fonts, which deliver typeface files. Google Fonts does not set cookies on the request, but the request itself is logged by Google for caching purposes. If that bothers you, you can block third-party requests at the browser level — the site will fall back to system fonts and still work.</p>
+    <p>If I ever add anything that does set a cookie (e.g. an analytics tool), this page will be updated and a banner will appear before the cookie is set.</p>
+  </section>
+
+  <!-- ===================== TERMS ===================== -->
+  <section class="legal-section" id="terms">
+    <h2>Terms</h2>
+    <p class="legal-section__date">Effective: 30 April 2026</p>
+
+    <p>These terms cover use of <strong>this website</strong> only. The actual contract for any project is a separate written agreement signed at the start of the work — these site terms don&rsquo;t replace that.</p>
+
+    <h3>About this site</h3>
+    <p>This site is operated by <strong>Raj</strong>, trading as <strong>S5 Web Co.</strong>, an independent self-employed web designer based in Sheffield, S5.</p>
+
+    <h3>Concept sites</h3>
+    <p>The portfolio pieces on this site (Forge Barbershop, Tariq&rsquo;s Kitchen) are <strong>concept builds</strong> made to demonstrate the kind of work I do. They are not real businesses. Any addresses, founder names, opening hours, or testimonials shown on those pages are illustrative.</p>
+
+    <h3>Site content</h3>
+    <p>The text, images, code and design of this site (and the concept builds linked from it) are © 2026 Raj / S5 Web Co. unless stated otherwise. You can read it, share the URL, and quote a sentence with attribution. Don&rsquo;t republish whole pages or copy the design.</p>
+
+    <h3>No warranty</h3>
+    <p>I keep this site current and try to make sure pricing and information is accurate, but it&rsquo;s provided &ldquo;as is&rdquo; for your information. Pricing on this page can change; the binding price for any project is the one in your written quote.</p>
+
+    <h3>Links to other sites</h3>
+    <p>Where this site links to third-party services (e.g. Cloudflare Pages, Fresha, Stripe), those sites have their own terms and privacy policies. I&rsquo;m not responsible for their content.</p>
+
+    <h3>Liability</h3>
+    <p>Nothing in these terms limits liability for anything that can&rsquo;t legally be limited (death or personal injury caused by negligence, fraud, etc.). Beyond that, I&rsquo;m not liable for any indirect or consequential loss arising from your use of this site.</p>
+
+    <h3>Governing law</h3>
+    <p>These terms are governed by the laws of England and Wales. Any dispute that can&rsquo;t be sorted out by talking will be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+    <h3>Contact</h3>
+    <p>Questions about these terms: <a href="mailto:Raj@s5web.co.uk">Raj@s5web.co.uk</a> or 07717 492936.</p>
+  </section>
+</main>
+
+<footer class="legal-footer">
+  <div class="container">
+    <a href="/">S5 Web Co.</a> · sheffield · s5 · © 2026
+  </div>
+</footer>
+
+</body>
+</html>

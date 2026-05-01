@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forge Barbershop · Case study · S5 Web Co.</title>
+<meta name="description" content="How the Forge Barbershop concept site was built: brief, decisions, booking flow, and what it demonstrates for any Sheffield barber.">
+<meta name="theme-color" content="#f7f4ed">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23be3838'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23f7f4ed' font-family='ui-monospace,Menlo,Consolas,monospace' font-size='14' font-weight='600'%3ES5%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="S5 Web Co.">
+<meta property="og:title" content="Forge Barbershop · Case study">
+<meta property="og:description" content="How the Forge Barbershop concept site was built: brief, decisions, booking flow, and what it demonstrates for any Sheffield barber.">
+<meta property="og:url" content="https://s5web.co.uk/forge/case/">
+<meta property="og:image" content="https://s5web.co.uk/og.png">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Forge Barbershop · Case study">
+<meta name="twitter:description" content="How the Forge Barbershop concept site was built, decision by decision.">
+<meta name="twitter:image" content="https://s5web.co.uk/og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #f7f4ed;
+  --ink: #1a1a1a;
+  --mono: #4a4842;
+  --muted: #8a877f;
+  --red: #be3838;
+  --border: rgba(26,26,26,0.12);
+  --serif: 'Instrument Serif', 'Times New Roman', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono-font: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 3px; }
+a:hover { color: var(--red); }
+
+.container { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+.case-masthead {
+  border-bottom: 0.5px solid var(--border);
+  padding: 2rem 0;
+  margin-bottom: 4rem;
+}
+.case-masthead .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.case-masthead .wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  text-decoration: none;
+}
+.case-masthead .wordmark__mono {
+  font-family: var(--mono-font);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--red);
+}
+.case-masthead .wordmark__serif {
+  font-family: var(--serif);
+  font-size: 19px;
+  color: var(--ink);
+}
+.case-masthead__back {
+  font-family: var(--mono-font);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mono);
+  text-decoration: none;
+}
+.case-masthead__back:hover { color: var(--red); }
+
+.case-eyebrow {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+.case-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.case-deck {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.4;
+  color: var(--mono);
+  margin-bottom: 3rem;
+  max-width: 620px;
+}
+
+.case-spec {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem 2rem;
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+  padding: 2rem 0;
+  margin-bottom: 4rem;
+}
+.case-spec dt {
+  font-family: var(--mono-font);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+.case-spec dd {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.case-section { margin-bottom: 5rem; scroll-margin-top: 2rem; }
+.case-section__num {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.6rem;
+}
+.case-section h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.6vw, 38px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.5rem;
+}
+.case-section h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  margin: 2rem 0 0.5rem;
+}
+.case-section p { margin-bottom: 1rem; }
+.case-section ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+.case-section li { margin-bottom: 0.4rem; }
+.case-section strong { font-weight: 500; }
+
+.case-figure {
+  margin: 2.5rem -1rem;
+}
+.case-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+}
+.case-figure figcaption {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.75rem;
+  text-align: center;
+}
+@media (min-width: 720px) {
+  .case-figure { margin: 2.5rem -3rem; }
+}
+
+.pull-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.4;
+  color: var(--ink);
+  border-left: 2px solid var(--red);
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.cta-block {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3rem 2rem;
+  border-radius: 6px;
+  margin: 4rem 0 5rem;
+  text-align: center;
+}
+.cta-block h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.6vw, 38px);
+  margin-bottom: 0.6rem;
+  color: var(--paper);
+}
+.cta-block p {
+  color: rgba(247,244,237,0.8);
+  margin-bottom: 1.75rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-block__actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.cta-block a {
+  font-family: var(--mono-font);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 99px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cta-block a.is-primary {
+  background: var(--red);
+  color: var(--paper);
+}
+.cta-block a.is-primary:hover { background: #d04444; color: var(--paper); }
+.cta-block a.is-ghost {
+  border: 0.5px solid rgba(247,244,237,0.3);
+  color: var(--paper);
+}
+.cta-block a.is-ghost:hover { border-color: var(--paper); color: var(--paper); }
+
+footer.case-footer {
+  border-top: 0.5px solid var(--border);
+  padding: 2rem 0 3rem;
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--mono);
+  text-align: center;
+}
+footer.case-footer a { color: inherit; text-decoration: none; }
+footer.case-footer a:hover { color: var(--red); }
+</style>
+</head>
+<body>
+
+<header class="case-masthead">
+  <div class="container">
+    <a href="../../" class="wordmark" aria-label="Back to S5 Web Co.">
+      <span class="wordmark__mono">S5</span>
+      <span class="wordmark__serif">Web Co.</span>
+    </a>
+    <a href="../" class="case-masthead__back">← View the live site</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <p class="case-eyebrow">Case · 01 · concept build</p>
+  <h1 class="case-title">Forge Barbershop</h1>
+  <p class="case-deck">A vintage editorial site for a fictional Shiregreen barbershop, built end-to-end as a spec piece. This is the working file.</p>
+
+  <dl class="case-spec">
+    <div>
+      <dt>Type</dt>
+      <dd>Concept build (no real client)</dd>
+    </div>
+    <div>
+      <dt>Sector</dt>
+      <dd>Barbershop</dd>
+    </div>
+    <div>
+      <dt>Pages</dt>
+      <dd>One, hand-built static HTML</dd>
+    </div>
+    <div>
+      <dt>Build time</dt>
+      <dd>About 3 days</dd>
+    </div>
+    <div>
+      <dt>Stack</dt>
+      <dd>HTML, CSS, vanilla JS</dd>
+    </div>
+    <div>
+      <dt>Hosting cost</dt>
+      <dd>£0 / month on Cloudflare Pages</dd>
+    </div>
+  </dl>
+
+  <figure class="case-figure">
+    <img src="../../img/portfolio-forge.jpg" alt="Forge Barbershop homepage hero">
+    <figcaption>Live site · forge homepage</figcaption>
+  </figure>
+
+  <!-- ===================== BRIEF ===================== -->
+  <section class="case-section" id="brief">
+    <p class="case-section__num">/ 01 The brief I gave myself</p>
+    <h2>What does a Sheffield barbershop site look like when it isn&rsquo;t a Wix template?</h2>
+
+    <p>Every barber site I looked at on Chesterfield Road and Firth Park was the same template. White background. Stock photo of a fade. A &ldquo;Book Now&rdquo; button that opens a Facebook page. Phone number in a tiny font at the bottom.</p>
+    <p>The brief I set was simple: build a one-page site for a fictional Shiregreen barbershop, called <strong>Forge</strong>, that would feel like the chair you sit in. Worn leather, brass fittings, warm light. It should also do the practical job: show prices, take a booking, prove the shop is real.</p>
+    <p>Constraint: no agency budget. The whole thing should be deliverable inside the £750 Standard tier.</p>
+  </section>
+
+  <!-- ===================== DECISIONS ===================== -->
+  <section class="case-section" id="decisions">
+    <p class="case-section__num">/ 02 The design decisions</p>
+    <h2>Three calls that shaped the rest.</h2>
+
+    <h3>1. Editorial layout, not landing-page layout</h3>
+    <p>Most small-business sites copy the SaaS landing-page format: hero, three-column features, testimonial slider, CTA. Forge ignores that entirely. The structure reads like a printed broadsheet: stamp date, masthead rule, an opening lede in italic serif, then the sections drop in like columns of a magazine. The page feels like it was set, not generated.</p>
+
+    <h3>2. A photo-print hero, not a stock photo</h3>
+    <p>The hero image gets a faint duotone treatment and sits inside a thin red rule with a typewritten caption. It looks like a darkroom print pinned to a wall, not a homepage. This single detail does most of the work in establishing &ldquo;this shop has taste&rdquo; before the visitor reads a single word.</p>
+
+    <h3>3. Dark, warm palette. Fraunces serif throughout.</h3>
+    <p>Charcoal #1a1410 background, brass #c9a05a accents, paper-cream type. Fraunces (a high-contrast contemporary serif with optical sizes) carries every headline and price. No system sans anywhere except the small mono-spaced labels. The result feels like a pub sign carved by someone who cared.</p>
+
+    <figure class="case-figure">
+      <img src="../img/hero-interior.jpg" alt="Forge Barbershop interior shot used in the live site">
+      <figcaption>Photo-print treatment · interior shot</figcaption>
+    </figure>
+  </section>
+
+  <!-- ===================== BOOKING ===================== -->
+  <section class="case-section" id="booking">
+    <p class="case-section__num">/ 03 The booking flow</p>
+    <h2>Three steps. No JavaScript framework. Works on a five-year-old phone.</h2>
+
+    <p>The booking modal is the most-built thing on the page. It&rsquo;s a three-step flow:</p>
+    <ul>
+      <li><strong>Step 1.</strong> Pick a service (cut, fade, beard, hot-towel shave). Each option shows price and duration.</li>
+      <li><strong>Step 2.</strong> Pick a barber and a slot. Slots come from a small JSON object, easy to swap for a Fresha or Booksy embed in production.</li>
+      <li><strong>Step 3.</strong> Name, phone, confirm. The submit handler pre-fills a WhatsApp message to the shop with all the booking details, so the shop owner gets a normal WhatsApp ping with the order ready to confirm.</li>
+    </ul>
+    <p>Total weight: about 4KB of JavaScript. No React, no Next, no booking-platform fees. The flow is replaced by a real Fresha or Booksy embed in a moment if the shop already runs one; the whole purpose was to prove the front-end could carry the visual experience without a heavy backend behind it.</p>
+
+    <blockquote class="pull-quote">
+      The site sits in front of your booking system. It&rsquo;s the shop window. The button drops them into Fresha or Booksy, or pings you on WhatsApp.
+    </blockquote>
+  </section>
+
+  <!-- ===================== BUILD NOTES ===================== -->
+  <section class="case-section" id="build">
+    <p class="case-section__num">/ 04 Build notes</p>
+    <h2>Things you only notice when you look closely.</h2>
+
+    <ul>
+      <li><strong>Mobile-first, but tested on a real phone.</strong> The whole site was built and reviewed on an actual mid-range Android, not a Chrome devtools simulator. Touch targets sit at 44px minimum. The booking modal&rsquo;s buttons are reachable with a thumb at the bottom of the screen, not the top.</li>
+      <li><strong>Loads in under a second.</strong> No build step, no framework runtime, no analytics, no font loader script. Fonts come from Google Fonts with <code>display=swap</code> and the page paints with system fonts before they arrive.</li>
+      <li><strong>Every image is local.</strong> Seven photos, all hosted with the site, all named semantically (<code>hero-interior.jpg</code>, <code>gallery-hot-towel.jpg</code>). No third-party CDN that might 404 a year from now.</li>
+      <li><strong>No cookies, no tracking.</strong> The site sets zero cookies. No analytics, no Facebook pixel, no consent banner needed. UK GDPR-clean by default.</li>
+      <li><strong>Accessibility.</strong> Landmark roles, alt text on every image, focus rings preserved, contrast ratios checked. The booking modal traps focus and closes on Escape.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== WHAT IT SHOWS ===================== -->
+  <section class="case-section" id="proof">
+    <p class="case-section__num">/ 05 What this build proves</p>
+    <h2>It shows what a £750 site looks like when nobody&rsquo;s phoning it in.</h2>
+
+    <p>Forge is fictional. There is no Bellhouse Road barber called Forge. The address, the founder bio, the testimonials are all illustrative. What it demonstrates is real:</p>
+    <ul>
+      <li>A Sheffield small business can have a site that looks like it cost £3,000 without paying £3,000.</li>
+      <li>A booking flow can sit on a static site without WordPress, plugins or monthly platform fees.</li>
+      <li>The whole page can load in under a second on a 4G phone in a barber&rsquo;s shop with three bars of signal.</li>
+      <li>None of this requires a content management system the owner has to learn. Updates come through a WhatsApp message.</li>
+    </ul>
+    <p>If you run a barbershop in S5, S9, or anywhere else in north Sheffield, this is what your shop window could look like online. Different photos, different palette, different name; same level of finish.</p>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="cta-block">
+    <h2>Want one for your shop?</h2>
+    <p>Founding-3 pricing is open. Two of three spots remaining for May–June 2026. Drop a WhatsApp or an email, no form, no spam.</p>
+    <div class="cta-block__actions">
+      <a class="is-primary" href="https://wa.me/447717492936?text=Hi%20Raj%2C%20I%20saw%20the%20Forge%20case%20study%20and%20I%27m%20interested%20in%20a%20site%20for%20my%20barbershop.%20Can%20we%20chat%3F">
+        WhatsApp Raj
+      </a>
+      <a class="is-ghost" href="mailto:Raj@s5web.co.uk?subject=Barbershop%20site%20enquiry%20%E2%80%94%20saw%20Forge%20case%20study&amp;body=Hi%20Raj%2C%0A%0AI%20saw%20the%20Forge%20case%20study%20and%20I%27d%20like%20to%20talk%20about%20a%20site%20for%20my%20shop.%0A%0AShop%20name%3A%0AArea%3A%0ABest%20way%20to%20reach%20me%3A">
+        Email instead
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="case-footer">
+  <div class="container">
+    <a href="../../">S5 Web Co.</a> · sheffield · s5 · © 2026
+  </div>
+</footer>
+
+</body>
+</html>

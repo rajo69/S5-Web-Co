@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S5 Web Co. · Websites for Sheffield takeaways</title>
+<meta name="description" content="Hand-built order-and-menu sites for Sheffield takeaways. Real cart, real food photos, no per-order commission, fixed price from £500.">
+<meta name="theme-color" content="#f7f4ed">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23be3838'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23f7f4ed' font-family='ui-monospace,Menlo,Consolas,monospace' font-size='14' font-weight='600'%3ES5%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="S5 Web Co.">
+<meta property="og:title" content="S5 Web Co. · Websites for Sheffield takeaways">
+<meta property="og:description" content="Hand-built order-and-menu sites for Sheffield takeaways. Real cart, real food photos, no per-order commission, fixed price from £500.">
+<meta property="og:url" content="https://s5web.co.uk/for-takeaways/">
+<meta property="og:image" content="https://s5web.co.uk/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="S5 Web Co. · Websites for Sheffield takeaways">
+<meta name="twitter:description" content="Hand-built order-and-menu sites for Sheffield takeaways. Real cart, real food photos, no per-order commission, fixed price from £500.">
+<meta name="twitter:image" content="https://s5web.co.uk/og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #f7f4ed;
+  --paper-warm: #efe9da;
+  --ink: #1a1a1a;
+  --red: #be3838;
+  --red-deep: #9a2929;
+  --mono: #4a4842;
+  --mono-faint: #8a877f;
+  --border: rgba(26, 26, 26, 0.10);
+  --border-strong: rgba(26, 26, 26, 0.22);
+  --serif: 'Instrument Serif', 'Times New Roman', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono-font: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.55;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+
+/* Layout */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+section { padding: 5rem 0; scroll-margin-top: 2rem; }
+
+@media (max-width: 720px) {
+  section { padding: 3.5rem 0; }
+}
+
+/* ========== HEADER ========== */
+.site-header {
+  padding: 1.5rem 1.5rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+.wordmark__mono {
+  font-family: var(--mono-font);
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.wordmark__serif {
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.site-nav {
+  display: flex;
+  gap: 0.25rem;
+}
+.site-nav a {
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--mono);
+  padding: 0.6rem 0.85rem;
+  border-radius: 6px;
+  transition: color 0.18s ease, background 0.18s ease;
+}
+.site-nav a:hover { color: var(--ink); background: var(--paper-warm); }
+
+@media (max-width: 720px) {
+  .wordmark__serif { font-size: 22px; }
+  .wordmark__mono { font-size: 16px; }
+  .site-nav a { padding: 0.7rem 0.55rem; font-size: 12px; }
+}
+@media (max-width: 540px) {
+  .site-nav a[href="#pricing"], .site-nav a[href="#about"] { display: none; }
+}
+@media (max-width: 380px) {
+  .site-nav { display: none; }
+}
+
+/* ========== HERO ========== */
+.hero {
+  padding-top: 3.5rem;
+  padding-bottom: 7rem;
+  position: relative;
+}
+@media (max-width: 720px) {
+  .hero { padding-top: 2rem; padding-bottom: 4.5rem; }
+}
+
+.hero__edition {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--mono);
+  margin-bottom: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.4rem;
+  align-items: center;
+}
+.hero__edition .dot { color: var(--red); }
+.hero__edition .stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--red);
+  color: var(--paper);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+}
+
+.hero__headline {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(46px, 8.4vw, 104px);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  max-width: 18ch;
+  margin-bottom: 2.5rem;
+}
+.hero__headline em {
+  font-style: italic;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.hero__sub {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--mono);
+  max-width: 540px;
+  margin-bottom: 2.5rem;
+}
+@media (max-width: 540px) {
+  .hero__sub { font-size: 16px; }
+}
+
+.hero__actions { display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center; }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 14px 22px;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 7px;
+  transition: transform 0.18s ease, background 0.18s ease;
+  min-height: 44px;
+}
+.btn-primary:hover { background: var(--red); transform: translateY(-1px); }
+.btn-primary svg { transition: transform 0.18s ease; }
+.btn-primary:hover svg { transform: translateX(3px); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 14px 18px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--ink);
+  border-radius: 7px;
+  transition: color 0.18s ease;
+  min-height: 44px;
+}
+.btn-ghost:hover { color: var(--red); }
+
+/* ========== SECTION META ========== */
+.section-meta {
+  display: flex;
+  gap: 1.25rem;
+  align-items: baseline;
+  margin-bottom: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 0.5px solid var(--ink);
+}
+.section-meta__num {
+  font-family: var(--mono-font);
+  font-size: 12px;
+  color: var(--red);
+  letter-spacing: 0.1em;
+}
+.section-meta__label {
+  font-family: var(--mono-font);
+  font-size: 12px;
+  color: var(--mono);
+  letter-spacing: 0.18em;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(34px, 5.2vw, 60px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+  margin-bottom: 3rem;
+}
+.section-title em { font-style: italic; }
+
+@media (max-width: 720px) {
+  .section-title { margin-bottom: 2rem; }
+}
+
+/* ========== WORK ========== */
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem 2.5rem;
+}
+@media (max-width: 760px) {
+  .work-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+.case { display: flex; flex-direction: column; }
+
+.case__preview {
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 0.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 1.25rem;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.case:hover .case__preview { transform: translateY(-4px); }
+
+.case__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.case:hover .case__preview img { transform: scale(1.04); }
+
+.case__preview-inner { text-align: center; padding: 1.5rem; }
+
+/* Forge — vintage barbershop */
+.case__preview--forge {
+  background: linear-gradient(135deg, #2a201a 0%, #1f1813 100%);
+}
+.case__preview--forge .preview-mark {
+  font-family: 'Times New Roman', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1;
+  margin-bottom: 0.85rem;
+  color: #c8a968;
+  letter-spacing: -0.01em;
+}
+.case__preview--forge .preview-sub {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: #8a7a64;
+  text-transform: uppercase;
+}
+.case__preview--forge .preview-rule {
+  width: 28px; height: 1px; background: #6b5e4c;
+  margin: 0.85rem auto 0.6rem;
+}
+
+/* Tariq's — order-app teal */
+.case__preview--tariqs {
+  background: #0c2227;
+  position: relative;
+}
+.case__preview--tariqs:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(243, 177, 38, 0.15), transparent 50%);
+}
+.case__preview--tariqs .preview-mark {
+  font-family: 'Arial Black', 'Arial Bold', sans-serif;
+  font-weight: 900;
+  font-size: clamp(32px, 5.5vw, 48px);
+  letter-spacing: -0.01em;
+  color: #f3b126;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+.case__preview--tariqs .preview-sub {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: rgba(232, 118, 90, 0.85);
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.case__meta {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.case__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.5vw, 36px);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.7rem;
+}
+.case__desc {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--mono);
+  margin-bottom: 1.1rem;
+  max-width: 38ch;
+}
+.case__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+.case__tag {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--mono);
+  border: 0.5px solid var(--border-strong);
+  padding: 4px 10px;
+  border-radius: 99px;
+}
+
+/* TRUST BAND */
+.trust-band { padding: 0.75rem 0 2.5rem; }
+
+/* PAIN OPENER */
+.pain-opener { padding: 0 0 4rem; text-align: center; }
+.pain-opener__text {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(22px, 3.4vw, 34px);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  max-width: 680px;
+  margin: 0 auto;
+}
+.pain-opener__text em {
+  font-style: italic;
+  color: var(--red);
+}
+
+/* FOUNDING THREE */
+.founding { padding: 1rem 0 5rem; }
+.founding__panel {
+  border: 0.5px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--paper-shade);
+  padding: 3rem 2.5rem;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.founding__eyebrow {
+  display: inline-block;
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 1.25rem;
+}
+.founding__headline {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 4.4vw, 44px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+.founding__headline em { color: var(--red); font-style: italic; }
+.founding__body {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--mono);
+  max-width: 56ch;
+  margin: 0 auto 1.75rem;
+}
+.founding__body strong { color: var(--ink); font-weight: 500; }
+.founding__availability {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mono);
+  margin: 0 0 1.75rem;
+}
+.founding__availability-dot {
+  width: 7px; height: 7px;
+  background: var(--red);
+  border-radius: 50%;
+  display: inline-block;
+  animation: foundingPulse 2.4s ease-in-out infinite;
+}
+@keyframes foundingPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.85); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .founding__availability-dot { animation: none; }
+}
+.founding__counter {
+  color: var(--red);
+  font-weight: 500;
+}
+@media (max-width: 540px) {
+  .founding__panel { padding: 2.25rem 1.25rem; }
+}
+
+/* FAQ */
+.faq-list { border-top: 0.5px solid var(--border); max-width: 900px; }
+.faq-item { border-bottom: 0.5px solid var(--border); }
+.faq-question {
+  cursor: pointer;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(20px, 2.4vw, 26px);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  padding: 1.4rem 2.5rem 1.4rem 0;
+  position: relative;
+  list-style: none;
+  transition: color 0.2s ease;
+  color: var(--ink);
+}
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 1.35rem;
+  font-family: var(--mono-font);
+  font-size: 22px;
+  color: var(--red);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1;
+  font-weight: 500;
+}
+.faq-item[open] .faq-question::after { transform: rotate(45deg); }
+.faq-item:hover .faq-question { color: var(--red); }
+.faq-answer {
+  padding: 0 2.5rem 1.5rem 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--mono);
+  max-width: 70ch;
+}
+@media (max-width: 540px) {
+  .faq-question { padding-right: 2rem; font-size: 19px; }
+  .faq-answer { padding-right: 0; font-size: 15px; }
+}
+.trust-band__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.trust-band__chip {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--mono);
+  border: 0.5px solid var(--border-strong);
+  padding: 6px 12px;
+  border-radius: 99px;
+  white-space: nowrap;
+  background: var(--paper-shade, transparent);
+}
+.case__link {
+  font-weight: 500;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  align-self: flex-start;
+  border-bottom: 1px solid currentColor;
+  padding: 0 0 2px;
+  transition: color 0.18s, gap 0.18s;
+}
+.case__link:hover { color: var(--red); gap: 0.6rem; }
+
+/* ========== PRICING ========== */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 0.5px solid var(--border-strong);
+}
+@media (max-width: 760px) {
+  .pricing-grid { grid-template-columns: 1fr; }
+}
+
+.tier {
+  padding: 2.5rem 0;
+  border-bottom: 0.5px solid var(--border);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.tier:last-child { border-bottom: 0; }
+
+@media (min-width: 761px) {
+  .tier { padding: 2.5rem 1.75rem; border-bottom: 0; }
+  .tier:not(:last-child) { border-right: 0.5px solid var(--border); }
+  .tier:first-child { padding-left: 0; }
+  .tier:last-child { padding-right: 0; }
+}
+
+.tier__name {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mono);
+  margin-bottom: 1rem;
+}
+.tier__price {
+  font-family: var(--serif);
+  font-size: 64px;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+.tier__price-cycle {
+  font-family: var(--mono-font);
+  font-size: 13px;
+  color: var(--mono);
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+.tier__tagline {
+  font-size: 14px;
+  color: var(--mono);
+  margin-bottom: 1.5rem;
+  line-height: 1.55;
+  max-width: 30ch;
+}
+.tier__includes { list-style: none; padding-top: 0.5rem; }
+.tier__includes li {
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 0.55rem 0;
+  border-top: 0.5px solid var(--border);
+  display: flex;
+  gap: 0.7rem;
+  align-items: baseline;
+}
+.tier__includes li::before {
+  content: "+";
+  color: var(--red);
+  font-family: var(--mono-font);
+  font-size: 13px;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+.tier__addon {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--mono);
+  margin-top: 0.85rem;
+  padding-top: 0.7rem;
+  border-top: 0.5px solid var(--border);
+  line-height: 1.5;
+}
+.tier__addon a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 2px;
+}
+.tier__addon a:hover { color: var(--red); }
+
+.tier__cta {
+  margin-top: auto;
+  padding-top: 1.75rem;
+}
+.tier__cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  box-sizing: border-box;
+}
+.tier__cta-btn:hover { background: var(--red); }
+.tier__cta-btn:active { transform: translateY(1px); }
+.tier__cta-btn svg { flex-shrink: 0; }
+.tier__cta-alt {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 12px;
+  color: var(--mono);
+  text-align: center;
+}
+.tier__cta-alt a {
+  color: var(--mono);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 2px;
+}
+.tier__cta-alt a:hover {
+  color: var(--red);
+  text-decoration-color: var(--red);
+}
+
+/* ========== PROCESS ========== */
+.process-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+@media (max-width: 980px) { .process-list { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 2rem; } }
+@media (max-width: 540px) { .process-list { grid-template-columns: 1fr; gap: 2rem; } }
+
+.step { padding-top: 1.25rem; border-top: 1px solid var(--ink); }
+.step__num {
+  font-family: var(--mono-font);
+  font-size: 12px;
+  color: var(--red);
+  letter-spacing: 0.16em;
+  margin-bottom: 1rem;
+}
+.step__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.75rem;
+}
+.step__desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--mono);
+  max-width: 32ch;
+}
+
+/* ========== ABOUT ========== */
+.about {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .about { grid-template-columns: 1fr; gap: 1.75rem; }
+}
+
+.about__stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px; height: 96px;
+  background: var(--red);
+  border-radius: 14px;
+  font-family: var(--mono-font);
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--paper);
+  letter-spacing: -0.01em;
+  flex-shrink: 0;
+}
+.about__copy {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.4;
+  color: var(--ink);
+  max-width: 36ch;
+}
+.about__copy strong { font-weight: 400; font-style: italic; }
+.about__signature {
+  margin-top: 1.75rem;
+  font-family: var(--mono-font);
+  font-size: 12px;
+  color: var(--mono);
+  letter-spacing: 0.12em;
+}
+
+/* ========== CONTACT ========== */
+.contact-intro {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--mono);
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+}
+
+.contact-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 760px) {
+  .contact-actions { grid-template-columns: 1fr; }
+}
+
+.contact-action {
+  padding: 1.75rem 1.5rem;
+  border: 0.5px solid var(--border-strong);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  min-height: 44px;
+}
+.contact-action:hover {
+  background: var(--ink);
+  color: var(--paper);
+  transform: translateY(-2px);
+  border-color: var(--ink);
+}
+.contact-action__label {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--red);
+}
+.contact-action:hover .contact-action__label { color: var(--red); }
+.contact-action__value {
+  font-family: var(--serif);
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-top: 0.25rem;
+}
+.contact-action__sub {
+  font-size: 13px;
+  color: var(--mono);
+  line-height: 1.5;
+  margin-top: 0.4rem;
+}
+.contact-action:hover .contact-action__sub { color: rgba(247, 244, 237, 0.7); }
+
+/* ========== FOOTER ========== */
+.site-footer {
+  border-top: 0.5px solid var(--border-strong);
+  padding: 2rem 1.5rem 2.5rem;
+  margin-top: 3rem;
+  font-size: 13px;
+  color: var(--mono);
+}
+.site-footer .container { display: block; padding: 0; }
+.site-footer__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.site-footer__stamp {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  color: var(--red);
+  letter-spacing: 0.12em;
+}
+.site-footer__cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  padding-top: 2rem;
+  border-top: 0.5px solid var(--border);
+}
+.site-footer__col h4 {
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0 0 1rem;
+  font-weight: 500;
+}
+.site-footer__col ul { list-style: none; padding: 0; margin: 0; }
+.site-footer__col li { margin-bottom: 0.45rem; line-height: 1.5; }
+.site-footer__col a, .site-footer__col li {
+  font-size: 13px;
+  color: var(--mono);
+  transition: color 0.18s;
+}
+.site-footer__col a:hover { color: var(--red); }
+.site-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 1.5rem;
+  border-top: 0.5px solid var(--border);
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--mono);
+}
+@media (max-width: 720px) {
+  .site-footer__cols { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+}
+@media (max-width: 480px) {
+  .site-footer__cols { grid-template-columns: 1fr; }
+}
+
+/* ========== REVEAL ON LOAD ========== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal { animation: fadeUp 0.7s cubic-bezier(0.2, 0, 0, 1) both; }
+.reveal-d1 { animation-delay: 0.05s; }
+.reveal-d2 { animation-delay: 0.18s; }
+.reveal-d3 { animation-delay: 0.32s; }
+.reveal-d4 { animation-delay: 0.46s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; }
+  html { scroll-behavior: auto; }
+  * { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
+}
+
+/* Selection */
+::selection { background: var(--red); color: var(--paper); }
+
+/* Screen-reader only */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="#top" class="wordmark" aria-label="S5 Web Co. — home">
+    <span class="wordmark__mono">S5</span>
+    <span class="wordmark__serif">Web Co.</span>
+  </a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="#work">Work</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__edition reveal reveal-d1">
+        <span class="stamp">S5</span>
+        <span>№ 01 / vol. 01 / 2026</span>
+        <span class="dot">·</span>
+        <span>sheffield</span>
+        <span class="dot">·</span>
+        <span>est. 2026</span>
+      </div>
+      <h1 class="hero__headline reveal reveal-d2">
+        Hand-built websites for <em>Sheffield</em> takeaways.
+      </h1>
+      <p class="hero__sub reveal reveal-d3">
+        Your own menu, your own cart, your own customers. Orders come straight to you, no 30% commission, no Just Eat algorithm deciding who finds you. Fixed price, from £500.
+      </p>
+      <div class="hero__actions reveal reveal-d4">
+        <a href="#work" class="btn-primary">
+          See the work
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10m0 0L8 3m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#pricing" class="btn-ghost">
+          What it costs
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10m0 0L8 3m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAND -->
+  <section class="trust-band reveal" aria-label="At a glance">
+    <div class="container">
+      <ul class="trust-band__list">
+        <li class="trust-band__chip">Solo, not agency</li>
+        <li class="trust-band__chip">Hand-built, no WordPress</li>
+        <li class="trust-band__chip">You own every file</li>
+        <li class="trust-band__chip">Same-day reply</li>
+        <li class="trust-band__chip">Walk into your shop</li>
+        <li class="trust-band__chip">S5 / S9 / S4</li>
+        <li class="trust-band__chip">From £500, fixed</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PAIN OPENER -->
+  <section class="pain-opener reveal" aria-label="The market gap">
+    <div class="container">
+      <p class="pain-opener__text">
+        Just Eat takes 30% of every order. Wix can&rsquo;t do a real menu with a working cart. Agencies quote £3,000 and don&rsquo;t know what a kebab box is. <em>The middle has been missing.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="container">
+      <div class="section-meta">
+        <span class="section-meta__num">/ 01</span>
+        <span class="section-meta__label">Selected work</span>
+      </div>
+      <h2 class="section-title">A concept build. <em>Made for an Attercliffe takeaway.</em></h2>
+
+      <div class="work-grid">
+        <article class="case">
+          <a href="../tariqs/" class="case__preview case__preview--tariqs" aria-label="View the Tariq's Kitchen site">
+            <img src="../img/portfolio-tariqs.jpg" alt="Tariq's Kitchen site preview" loading="lazy">
+          </a>
+          <div class="case__meta">case · 01 · concept</div>
+          <h3 class="case__title">Tariq&rsquo;s Kitchen</h3>
+          <p class="case__desc">Full order-app for a fictional Attercliffe takeaway. Persistent cart, delivery and collection toggle, full checkout flow, 31-item menu across 5 categories with real photos for every dish. Built as a spec piece to show what a Sheffield takeaway can run on instead of paying Just Eat 30%.</p>
+          <div class="case__tags">
+            <span class="case__tag">design</span>
+            <span class="case__tag">build</span>
+            <span class="case__tag">cart system</span>
+            <span class="case__tag">mobile-first</span>
+          </div>
+          <a href="../tariqs/" class="case__link">
+            Visit the site
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7h10m0 0L8 3m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-meta">
+        <span class="section-meta__num">/ 02</span>
+        <span class="section-meta__label">What it costs</span>
+      </div>
+      <h2 class="section-title">Three simple options. <em>Fixed prices.</em> No surprises.</h2>
+
+      <div class="pricing-grid">
+        <div class="tier">
+          <div class="tier__name">Starter</div>
+          <div class="tier__price">£500</div>
+          <p class="tier__tagline">A proper one-page site. Fits most small shops, salons, and tradespeople comfortably.</p>
+          <ul class="tier__includes">
+            <li>Single-page. Hand-built, no WordPress.</li>
+            <li>You own every file. Host where you want.</li>
+            <li>Mobile-tested on a real phone, not a simulator</li>
+            <li>Up to 2 rounds of revisions</li>
+            <li>Live in 1–2 weeks</li>
+          </ul>
+          <p class="tier__addon">Add-on · SEO foundation +£200 · <a href="../seo/">see SEO method</a></p>
+          <div class="tier__cta">
+            <a class="tier__cta-btn" href="https://wa.me/447717492936?text=Hi%20Raj%2C%20I%27m%20interested%20in%20the%20Starter%20site%20%28%C2%A3500%29.%20Could%20we%20have%20a%20quick%20chat%3F">
+              Get the Starter
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2 7h10m0 0L8 3m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <p class="tier__cta-alt">or <a href="mailto:Raj@s5web.co.uk?subject=Starter%20site%20enquiry&amp;body=Hi%20Raj%2C%0A%0AI%27m%20interested%20in%20the%20Starter%20site%20%28%C2%A3500%29.%20Could%20we%20have%20a%20quick%20chat%3F%0A%0AThanks">email instead</a></p>
+          </div>
+        </div>
+
+        <div class="tier">
+          <div class="tier__name">Standard</div>
+          <div class="tier__price">£900</div>
+          <p class="tier__tagline">Multi-page, or with one custom feature like online booking, a gallery, or simple ordering.</p>
+          <ul class="tier__includes">
+            <li>Up to 5 pages. Hand-built, no WordPress.</li>
+            <li>One custom feature (booking, gallery, ordering)</li>
+            <li>You own every file. Host where you want.</li>
+            <li><strong>SEO foundation included</strong>: GBP, schema, FAQ block, citations, review flow</li>
+            <li>Live in 2–3 weeks</li>
+          </ul>
+          <div class="tier__cta">
+            <a class="tier__cta-btn" href="https://wa.me/447717492936?text=Hi%20Raj%2C%20I%27m%20interested%20in%20the%20Standard%20site%20%28%C2%A3900%29.%20Could%20we%20have%20a%20quick%20chat%3F">
+              Get the Standard
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2 7h10m0 0L8 3m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <p class="tier__cta-alt">or <a href="mailto:Raj@s5web.co.uk?subject=Standard%20site%20enquiry&amp;body=Hi%20Raj%2C%0A%0AI%27m%20interested%20in%20the%20Standard%20site%20%28%C2%A3900%29.%20Could%20we%20have%20a%20quick%20chat%3F%0A%0AThanks">email instead</a></p>
+          </div>
+        </div>
+
+        <div class="tier">
+          <div class="tier__name">Care plan</div>
+          <div class="tier__price">£35<span class="tier__price-cycle">/mo</span></div>
+          <p class="tier__tagline">Optional. Hosting, updates, backups, and small changes whenever you need them.</p>
+          <ul class="tier__includes">
+            <li>Hosting and SSL on fast UK servers</li>
+            <li>Monthly content updates</li>
+            <li>Ongoing GBP posts and review monitoring</li>
+            <li>Security patches and daily backups</li>
+            <li>Same-day reply, fix that night if I can</li>
+            <li>Cancel any time, walk away with your files</li>
+          </ul>
+          <div class="tier__cta">
+            <a class="tier__cta-btn" href="https://wa.me/447717492936?text=Hi%20Raj%2C%20I%27d%20like%20to%20add%20the%20%C2%A335%2Fmonth%20care%20plan.">
+              Add the Care plan
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2 7h10m0 0L8 3m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <p class="tier__cta-alt">or <a href="mailto:Raj@s5web.co.uk?subject=Care%20plan%20enquiry&amp;body=Hi%20Raj%2C%0A%0AI%27d%20like%20to%20add%20the%20%C2%A335%2Fmonth%20care%20plan%20to%20my%20existing%20site.%0A%0AThanks">email instead</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDING THREE -->
+  <section class="founding reveal" aria-labelledby="founding-headline">
+    <div class="container">
+      <div class="founding__panel">
+        <span class="founding__eyebrow">First three clients</span>
+        <h2 class="founding__headline" id="founding-headline">Be one of the <em>first three.</em></h2>
+        <p class="founding__body">
+          I&rsquo;m taking on the first three clients at the £500 starter price <strong>plus two hours of in-person training</strong> on how to update your site after launch. After three, prices go up. I&rsquo;d rather have three real shops to point to than ten polite testimonials.
+        </p>
+        <p class="founding__availability">
+          <span class="founding__availability-dot" aria-hidden="true"></span>
+          <strong class="founding__counter">2 of 3 spots remaining</strong> · Booking starts for May–June 2026
+        </p>
+        <a href="#contact" class="btn-primary">
+          Get in touch
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10m0 0L8 3m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+      <div class="section-meta">
+        <span class="section-meta__num">/ 03</span>
+        <span class="section-meta__label">How it works</span>
+      </div>
+      <h2 class="section-title">Four steps. <em>Plain English.</em> No agency-speak.</h2>
+
+      <div class="process-list">
+        <div class="step">
+          <div class="step__num">/ 01</div>
+          <h3 class="step__title">We meet</h3>
+          <p class="step__desc">In your shop, on the phone, or over WhatsApp. You tell me what your business does and what you want. 15 minutes, free, no obligation.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">/ 02</div>
+          <h3 class="step__title">I quote</h3>
+          <p class="step__desc">A fixed-price quote in plain English, usually within 24 hours. Pay 50% to start, 50% on launch. Nothing hidden in between.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">/ 03</div>
+          <h3 class="step__title">I build</h3>
+          <p class="step__desc">Most sites take 1–2 weeks. You see progress as I go and you have rounds to ask for changes. No mystery, no waiting.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">/ 04</div>
+          <h3 class="step__title">You launch</h3>
+          <p class="step__desc">Site goes live. I show you what you can update yourself. The optional care plan kicks in if you want it. You own everything.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-meta">
+        <span class="section-meta__num">/ 04</span>
+        <span class="section-meta__label">Common questions</span>
+      </div>
+      <h2 class="section-title">Things people ask <em>before they sign.</em></h2>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">I&rsquo;m already on Just Eat / Deliveroo / Uber Eats. Do I drop them?</summary>
+          <div class="faq-answer">
+            <p>You don&rsquo;t have to. Plenty of takeaways run both: the platforms bring discovery, your own site keeps your regulars off the 30% commission. Every order that comes through your own site is one that didn&rsquo;t cost you a third of the ticket. Most owners I talk to want to shift collection orders and regulars onto their own site, and leave new-customer delivery on the platforms. The site supports both flows.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">How do orders actually reach the kitchen?</summary>
+          <div class="faq-answer">
+            <p>Three options, all simple. Cheapest: a WhatsApp link with the order pre-filled, you reply with a time. Mid: an email-to-print setup, every order auto-prints to a kitchen receipt printer. Proper: full Stripe checkout with a tablet in the kitchen showing live orders. We pick what fits your shop. The Tariq&rsquo;s concept above demonstrates the full Stripe-checkout flow.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">My menu has 40+ items. Can the site handle that?</summary>
+          <div class="faq-answer">
+            <p>Yes. Tariq&rsquo;s above runs 31 items across 5 categories with a photo for every dish, on a single fast-loading page; the same pattern scales to 60–80 items without slowing down. Categories collapse on mobile so the page never feels heavy. We can split a long menu into starters / mains / sides / drinks / deals, exactly how the till groups it.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Do I need photos of every dish? I haven&rsquo;t got any.</summary>
+          <div class="faq-answer">
+            <p>Photos sell food, so yes, ideally. Two ways. I come in for a couple of hours with a phone and shoot the bestsellers on a clean plate next to the window for natural light; that covers most of a menu. Or you send me whatever you&rsquo;ve already got over WhatsApp. If a dish has no photo, the site falls back to a clean text card so the menu still looks intentional, not broken.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Prices change. How do I update the menu?</summary>
+          <div class="faq-answer">
+            <p>Send me a WhatsApp with the change (one item, ten items, holiday closures, new specials). On the £35 care plan it&rsquo;s included and usually live the same day. Off the plan, small edits are normally free or a few quid. If you&rsquo;d rather edit prices yourself I can build a simple admin page where you tap them in, but it costs more upfront and most takeaways don&rsquo;t bother. Up to you.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Can I see what one looks like before committing?</summary>
+          <div class="faq-answer">
+            <p>Yes, scroll up. The Tariq&rsquo;s Kitchen site is a concept build for a fictional Attercliffe takeaway, made specifically to show what your shop&rsquo;s site could look like. The cart works, the checkout works, all 31 items have real photos, it&rsquo;s a real working build. Yours wouldn&rsquo;t be a copy — different menu, different photos, different palette — but the level of finish is what you&rsquo;d be getting.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-meta">
+        <span class="section-meta__num">/ 05</span>
+        <span class="section-meta__label">Who's behind this</span>
+      </div>
+      <h2 class="visually-hidden">About S5 Web Co.</h2>
+      <div class="about">
+        <div class="about__stamp" aria-hidden="true">S5</div>
+        <div>
+          <p class="about__copy">
+            <strong>I'm Raj,</strong> based in Sheffield S5. I started S5 Web Co. because too many small businesses round here are paying the wrong price for the wrong site — five-figure builds for a one-page menu, or £20-a-month templates that look like everyone else's. The middle ground — a properly designed site, hand-built, fixed price, that you actually own — wasn't really being offered. So now it is.
+          </p>
+          <div class="about__signature">— Raj · S5 Web Co. · Sheffield S5</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-meta">
+        <span class="section-meta__num">/ 06</span>
+        <span class="section-meta__label">Get in touch</span>
+      </div>
+      <h2 class="section-title">Quickest way to start: <em>send a message.</em></h2>
+      <p class="contact-intro">I work mainly across S5, S9, S4 and the rest of north and east Sheffield — but if you're nearby and small, I'd like to hear from you. No website yet? Even better, that's exactly the brief.</p>
+
+      <div class="contact-actions">
+        <a href="https://wa.me/447717492936" class="contact-action" aria-label="Message on WhatsApp">
+          <span class="contact-action__label">/ whatsapp</span>
+          <span class="contact-action__value">Send a message</span>
+          <span class="contact-action__sub">Usually quickest. I reply within a few hours.</span>
+        </a>
+        <a href="tel:+447717492936" class="contact-action" aria-label="Call by phone">
+          <span class="contact-action__label">/ phone</span>
+          <span class="contact-action__value">07717 492936</span>
+          <span class="contact-action__sub">Mon–Sat, 9am to 7pm.</span>
+        </a>
+        <a href="mailto:Raj@s5web.co.uk" class="contact-action" aria-label="Send an email">
+          <span class="contact-action__label">/ email</span>
+          <span class="contact-action__value">Raj@S5Web.co.uk</span>
+          <span class="contact-action__sub">For longer briefs and quotes.</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__top">
+      <a href="#top" class="wordmark">
+        <span class="wordmark__mono" style="font-size: 14px;">S5</span>
+        <span class="wordmark__serif" style="font-size: 19px;">Web Co.</span>
+      </a>
+      <span class="site-footer__stamp">[ S5 ]</span>
+    </div>
+    <div class="site-footer__cols">
+      <div class="site-footer__col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="#work">Selected work</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#process">How it works</a></li>
+          <li><a href="#faq">Common questions</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://wa.me/447717492936">WhatsApp</a></li>
+          <li><a href="tel:+447717492936">07717 492936</a></li>
+          <li><a href="mailto:Raj@s5web.co.uk">Raj@S5Web.co.uk</a></li>
+          <li>Sheffield S5</li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="../legal/#privacy">Privacy</a></li>
+          <li><a href="../legal/#cookies">Cookies</a></li>
+          <li><a href="../legal/#terms">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>sheffield · s5 · © 2026 · hand-built in Sheffield</span>
+      <span>Last updated 1 May 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
