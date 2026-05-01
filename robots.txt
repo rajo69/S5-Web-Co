@@ -1,0 +1,7 @@
+# S5 Web Co. — robots.txt
+# Open to all crawlers, including AI assistants.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://s5web.co.uk/sitemap.xml
